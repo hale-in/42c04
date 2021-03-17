@@ -6,7 +6,7 @@
 /*   By: taeheeki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 21:21:01 by taeheeki          #+#    #+#             */
-/*   Updated: 2021/03/16 23:12:39 by taeheeki         ###   ########.fr       */
+/*   Updated: 2021/03/17 17:12:53 by taeheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	ft_atoi(char *str)
 	}
 	while (48 <= str[i] && str[i] <= 57)
 	{
-		nb = (nb * 10) + (str[i] - '0');
+		nb = (nb * 10) + ((str[i] - '0') * neg);
 		i++;
 	}
-	return (nb * neg);
+	return (nb);
 }

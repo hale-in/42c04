@@ -1,21 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taeheeki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 11:00:08 by taeheeki          #+#    #+#             */
-/*   Updated: 2021/03/17 20:40:18 by taeheeki         ###   ########.fr       */
+/*   Created: 2021/03/17 13:04:32 by taeheeki          #+#    #+#             */
+/*   Updated: 2021/03/17 22:13:25 by taeheeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 int		size(char *base)
 {
@@ -52,7 +45,7 @@ int		check(char *base)
 	return (1);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+char	ft_putnbr_base(int nbr, char *base)
 {
 	int				i;
 	int				change[100];
@@ -76,6 +69,32 @@ void	ft_putnbr_base(int nbr, char *base)
 			i++;
 		}
 		while (--i >= 0)
-			ft_putchar(base[change[i]]);
+			return (base[change[i]]);
 	}
+}
+
+int		ft_atoi_base(char *str, char *base)
+{
+	int i;
+	int result;
+	int neg;
+
+	i = 0;
+	result = 0;
+	neg = 1;
+	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' ||
+			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg = neg * -1;
+		i++;
+	}
+	while (putnbr_base(str))
+	{
+		result = (result * 10) + ((str[i] - '0') * neg);
+		i++;
+	}
+	return (result);
 }
